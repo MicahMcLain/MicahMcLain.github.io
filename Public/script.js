@@ -107,6 +107,24 @@ window.addEventListener("click", function (e) {
     }
 });
 
+//about me modal
+document.getElementById("aboutMeButton").addEventListener("click", function () {
+    const modal = document.getElementById("aboutMeModal");
+    modal.style.display = "block";
+});
+
+document.getElementById("closeAboutMe").addEventListener("click", function () {
+    const modal = document.getElementById("aboutMeModal");
+    modal.style.display = "none";
+});
+// Close the modal if the user clicks outside of it
+window.addEventListener("click", function (e) {
+    const modal = document.getElementById("aboutMeModal");
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
 
 //text animation script
 

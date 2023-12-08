@@ -1,26 +1,34 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const nodemailer = require("nodemailer");
 
 const PORT = process.env.PORT || 5000;
 
+app.use(
+  cors({
+    origin: "micahmclain.github.io",
+  })
+);
 app.use(express.static("Public"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "index.html");
+  const filePath = __dirname + "/Public/index.html";
+  console.log("Attempting to serve:", filePath);
+  res.sendFile(filePath);
 });
 
-app.post("/", (req, res) => {
+app.post("/test", (req, res) => {
   console.log(req.body);
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
+      pass: process.env.NODEMAILER_PASSWORD,
     },
   });
 

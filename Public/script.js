@@ -1,3 +1,4 @@
+// const axios = require("axios");
 // toggle nav bar
 
 let menuIcon = document.querySelector("#menu-icon");
@@ -46,7 +47,6 @@ window.onscroll = () => {
   );
 };
 
-//contact form and email sending code
 const contactForm = document.querySelector(".contact-form");
 
 let name = document.getElementById("name");
@@ -55,7 +55,7 @@ let phoneNum = document.getElementById("phoneNum");
 let subject = document.getElementById("subject");
 let message = document.getElementById("message");
 
-contactForm.addEventListener("submit", (e) => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   let formData = {
@@ -66,12 +66,10 @@ contactForm.addEventListener("submit", (e) => {
     message: message.value,
   };
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", "/");
-  xhr.setRequestHeader("content-type", "application/json");
-  xhr.onload = function () {
-    console.log(xhr.responseText);
-    if (xhr.responseText == "success") {
+  try {
+    const response = await axios.post("/test", formData);
+
+    if (response.data === "success") {
       alert("Email successfully sent. Thank You.");
       name.value = "";
       email.value = "";
@@ -81,9 +79,10 @@ contactForm.addEventListener("submit", (e) => {
     } else {
       alert("OOPS! Something went wrong. Please try again.");
     }
-  };
-
-  xhr.send(JSON.stringify(formData));
+  } catch (error) {
+    console.error("Error during Axios request:", error);
+    alert("An error occurred. Please try again later.");
+  }
 });
 
 //contact info modal

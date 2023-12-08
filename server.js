@@ -13,11 +13,11 @@ app.use(
     origin: "micahmclain.github.io",
   })
 );
-app.use(express.static("Public"));
+app.use(express.static("docs"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  const filePath = __dirname + "/Public/index.html";
+  const filePath = __dirname + "/docs/index.html";
   console.log("Attempting to serve:", filePath);
   res.sendFile(filePath);
 });

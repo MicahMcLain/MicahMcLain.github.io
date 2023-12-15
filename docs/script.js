@@ -47,43 +47,43 @@ window.onscroll = () => {
   );
 };
 
-const contactForm = document.querySelector(".contact-form");
+// const contactForm = document.querySelector(".contact-form");
 
-let name = document.getElementById("name");
-let email = document.getElementById("email");
-let phoneNum = document.getElementById("phoneNum");
-let subject = document.getElementById("subject");
-let message = document.getElementById("message");
+// let name = document.getElementById("name");
+// let email = document.getElementById("email");
+// let phoneNum = document.getElementById("phoneNum");
+// let subject = document.getElementById("subject");
+// let message = document.getElementById("message");
 
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+// contactForm.addEventListener("submit", async (e) => {
+//   e.preventDefault();
 
-  let formData = {
-    name: name.value,
-    email: email.value,
-    phoneNum: phoneNum.value,
-    subject: subject.value,
-    message: message.value,
-  };
+//   let formData = {
+//     name: name.value,
+//     email: email.value,
+//     phoneNum: phoneNum.value,
+//     subject: subject.value,
+//     message: message.value,
+//   };
 
-  try {
-    const response = await axios.post("/test", formData);
+//   try {
+//     const response = await axios.post("/test", formData);
 
-    if (response.data === "success") {
-      alert("Email successfully sent. Thank You.");
-      name.value = "";
-      email.value = "";
-      phoneNum.value = "";
-      subject.value = "";
-      message.value = "";
-    } else {
-      alert("OOPS! Something went wrong. Please try again.");
-    }
-  } catch (error) {
-    console.error("Error during Axios request:", error);
-    alert("An error occurred. Please try again later.");
-  }
-});
+//     if (response.data === "success") {
+//       alert("Email successfully sent. Thank You.");
+//       name.value = "";
+//       email.value = "";
+//       phoneNum.value = "";
+//       subject.value = "";
+//       message.value = "";
+//     } else {
+//       alert("OOPS! Something went wrong. Please try again.");
+//     }
+//   } catch (error) {
+//     console.error("Error during Axios request:", error);
+//     alert("An error occurred. Please try again later.");
+//   }
+// });
 
 //contact info modal
 document
